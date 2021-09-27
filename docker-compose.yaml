@@ -1,0 +1,24 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  svc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER=DEVELOPMENT
+    ports:
+      - 8089:8089
+    volumes:
+     - /home/celeratesdev/projects/sadhelx/sadhelx-assets/guidelines/documents:/assets/guidelines/documents
+    #  - /home/repoerna/projects/sadhelx/sadhelx-assets:/assets/guidelines/documents
+
+    restart: unless-stopped
+    networks:
+      - sadhelx_network
+    mem_limit: 256m
+
+networks:
+  sadhelx_network:
+    name: sadhelx_net
+
+
